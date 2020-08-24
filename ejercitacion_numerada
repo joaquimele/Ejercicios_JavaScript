@@ -1,0 +1,413 @@
+//EJERCICIO 1
+//FUNCION DECLARADA
+/*function funcionEjercicio1(cadena = ""){
+if(!cadena){//SI LA CADENA ESTA VACÍA ENTONCES...
+console.warn("No hay ninguna cadena para evaluar y contar caracteres");
+} else {
+console.info(`La cadena ${cadena} tiene una cantidad de ${cadena.length} caracteres`);
+}
+} 
+funcionEjercicio1("Joaquin Mele");
+*/
+
+//FORMA SIMPLIFICADA CON FUNCION EXPRESADA
+const funcionEjercicio1 = (cadena = "") => (!cadena) ? console.warn("No hay cadena de texto para evaluar"): console.info(`La cadena ${cadena} tiene ${cadena.length} caracteres`);
+
+funcionEjercicio1("Joaquin Mele");
+
+//EJERCICIO 2
+//FUNCION DECLARADA
+/*function funcionEjercicio2(cadena2){
+if(!cadena2){
+console.warn("No hay ninguna cadena de texto para evaluar");
+} else {
+console.info(cadena2.slice(0,4));
+}
+}
+funcionEjercicio2("Hola Mundo");*/
+
+//FORMA SIMPLIFICADA CON FUNCION EXPRESADA
+const funcionEjercicio2 = (cadena2 = "", longitud = undefined) => (!cadena2) ? console.warn("No hay cadena de texto para evaluar") : (longitud === undefined) ? console.warn("No ingresaste la longitud para cortar el texto") : console.info(cadena2.slice(0, longitud));
+funcionEjercicio2("Hola Mundo", 4);
+
+//EJERCICIO 3
+function funcionEjercicio3(cadena3 = "", separador = undefined){
+(!cadena3) ? console.warn("No hay cadena de texto para evaluar") : (separador === undefined) ? console.warn("No ingresaste el separador para cortar la cadena de texto") : console.info(cadena3.split(separador));
+}
+
+funcionEjercicio3("Hola a todos", " ");
+funcionEjercicio3("Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic", ",");
+
+//EJERCICIO 4
+function funcionEjercicio4(cadena4 = "", repetidor = undefined){
+(!cadena4) ? console.warn("No hay cadena de texto para evaluar") : (repetidor === undefined) ? console.warn("No hay un repetidor para escribir X veces la cadena") : console.info(cadena4.repeat(repetidor));
+}
+
+funcionEjercicio4("Hola Mundo ", 3);
+
+
+//EJERCICIO 5
+const funcionEjercicio5 = (cadena5 = "") => {
+(!cadena5) ? console.warn("No hay cadeba de texto para evaluar") : console.info(cadena5.split("").reverse().join(""));
+}
+
+funcionEjercicio5("Hola mundo");
+
+//EJERCICIO 6
+const funcionEjercicio6 = (cadena6 = "", palabra = "") => {
+if((!cadena6)){
+console.warn("No hay cadena de texto para evaluar");
+} else if(!palabra){
+console.warn("No ingresaste la palabra para buscar y contar ")
+}
+let contadorPalabras = 0;
+let cadenaDeTexto = cadena6.split(" ");
+
+for(let i = 0; i < cadena6.length; i++){
+if(cadenaDeTexto[i] === palabra){
+contadorPalabras++; 
+}
+}
+console.info(`La palabra ${palabra} se repite ${contadorPalabras} vez/veces`);
+}
+funcionEjercicio6("Hola mundo adios mundo", "mundo");
+
+//EJERCICIO 7
+const funcionEjercicio7 = (cadena7 = "") => {
+if(!cadena7){
+console.warn("No hay cadena de texto para ser evaluada");
+} else {
+let cadenaEval = cadena7.toLowerCase();
+let alReves = cadena7.toLowerCase().split("").reverse().join("");
+if( alReves === cadenaEval){
+console.info(`Es palindromo, palabra original: ${cadenaEval} - palabra al reves ${alReves}`);
+} else {
+console.info(`No es palindromo, palabra original: ${cadenaEval} - palabra al reves ${alReves}`);
+	}
+  }
+}
+
+funcionEjercicio7("Neuquen");
+
+
+//EJERCICIO 8
+const funcionEjercicio8 = (cadena8 = "", patron = "") => {
+(!cadena8) ? console.warn("No hay cadena para evaluar") : (!patron) ? console.warn("No hay un patron para evaluar") : console.info(cadena8.replace(new RegExp(patron, "ig"), ""));
+}
+
+funcionEjercicio8("abc1 abc2 abc3 abc4 abc5", "abc");
+
+
+//EJERCICIO 9
+const funcionEjercicio9 = (minimo, maximo) => {
+(!minimo) ? console.warn("No hay un minimo para el rango") : (!maximo) ? console.warn("No hay un maximo para el rango") : console.info("Numero aleatorio:",Math.round(Math.random() * (maximo - minimo) + minimo))
+} 
+
+funcionEjercicio9(501, 600);
+
+//EJERCICIO 10
+const funcionEjercicio10 = (num = 0) => {
+if(!num){
+console.warn("No hay un numero para evaluar");
+} else if(typeof num !== "number"){
+console.error(`El valor ${num} no es un numero`);
+}
+num = num.toString();
+
+numAlReves = num.split("").reverse().join("");
+
+if(numAlReves === num){
+console.info(`El numero ${num} es capicúa`);
+} else {
+console.info(`El numero ${num} no es capicúa`);
+}
+}
+
+funcionEjercicio10(747);
+
+//EJERCICIO 11
+const funcionEjercicio11 = (numFactorial) => {
+if(!numFactorial){
+console.warn("No hay un numero para evaluar");
+} else if(typeof numFactorial !== "number"){
+console.error(`El valor ${numFactorial} no es un numero`);
+} else if(numFactorial === 0){
+console.error("El numero no puede ser 0");
+} else if(Math.sign(numFactorial) === -1){
+console.error("El numero no puede ser negativo");
+} else {
+let resultado = 1;
+
+for(let i = 1; i <= numFactorial; i++){
+resultado = resultado * i;
+}
+return console.info(`EL factorial de ${numFactorial} es ${resultado}`);
+ }
+}
+
+funcionEjercicio11(4);
+
+
+//EJERCICIO 9
+const funcionEjercicio9 = (minimo, maximo) => {
+(!minimo) ? console.warn("No hay un minimo para el rango") : (!maximo) ? console.warn("No hay un maximo para el rango") : console.info("Numero aleatorio:",Math.round(Math.random() * (maximo - minimo) + minimo))
+} 
+
+funcionEjercicio9(501, 600);
+
+//EJERCICIO 10
+const funcionEjercicio10 = (num = 0) => {
+if(!num){
+console.warn("No hay un numero para evaluar");
+} else if(typeof num !== "number"){
+console.error(`El valor ${num} no es un numero`);
+}
+num = num.toString();
+
+numAlReves = num.split("").reverse().join("");
+
+if(numAlReves === num){
+console.info(`El numero ${num} es capicúa`);
+} else {
+console.info(`El numero ${num} no es capicúa`);
+}
+}
+
+funcionEjercicio10(747);
+
+//EJERCICIO 11
+const funcionEjercicio11 = (numFactorial) => {
+if(!numFactorial){
+console.warn("No hay un numero para evaluar");
+} else if(typeof numFactorial !== "number"){
+console.error(`El valor ${numFactorial} no es un numero`);
+} else if(numFactorial === 0){
+console.error("El numero no puede ser 0");
+} else if(Math.sign(numFactorial) === -1){
+console.error("El numero no puede ser negativo");
+} else {
+let resultado = 1;
+
+for(let i = 1; i <= numFactorial; i++){
+resultado = resultado * i;
+}
+return console.info(`EL factorial de ${numFactorial} es ${resultado}`);
+}
+}
+
+funcionEjercicio11(4);
+
+
+//EJERCICIO 12
+const funcionEjercicio12 = (numeroIngresado = undefined) => {
+if(!numeroIngresado){
+console.warn("No hay un numero para evaluar");
+} else if(typeof numeroIngresado !== "number"){
+console.error(`El valor ${numeroIngresado} no es un numero`);
+} else if((numeroIngresado === 0) || (numeroIngresado === 1)){
+console.error("El numero no puede ser 0 o 1");
+} else if(Math.sign(numeroIngresado === -1)){
+console.error("El numero no puede ser negativo");
+} else {
+let divisible = false;
+for(let i = 2; i < numeroIngresado; i++){
+if((numeroIngresado % i) === 0){
+divisible = true;
+break;
+}
+}
+return(divisible) ? console.info(`El numero ${numeroIngresado} NO es primo`) : console.info(`El numero ${numeroIngresado} SI es primo`);
+}
+}
+funcionEjercicio12(6);
+
+//EJERCICIO 13
+const funcionEjercicio13 = (numIngresado) => {
+if(!numIngresado){
+console.warn("No hay un numero para evaluar");
+} else if(typeof numIngresado !== "number"){
+console.error(`El valor ${numIngresado} no es un numero`);
+} else {
+if(numIngresado % 2 === 0){
+console.info(`El numero ${numIngresado} SI es un numero par`);
+} else {
+console.info(`El numero ${numIngresado} NO es un numero par`)
+}
+}
+}
+funcionEjercicio13(12);
+
+//EJERCICIO 14
+const funcionEjercicio14 = (grados = undefined, unidad = undefined) => {
+if(grados === undefined){
+return console.warn("No ingresaste los grados para evaluar");
+} else if(typeof grados !== "number"){
+return console.error(`El valor ${grados} no es un numero`);
+} else if(unidad === undefined){
+return console.warn("No ingresaste una unidad para evaluar");
+} else if(typeof unidad !== "string"){
+return console.error(`El valor ${unidad} no es un caracter`);
+} else if(unidad.length !== 1 || !/(C|F)/.test(unidad)){
+return console.warn("Unidad de caracter no reconocido");
+} else {
+if(unidad === "C"){
+console.info(`${grados}°C = ${Math.round((grados * 9/5) + 32)}°F`);
+} else {
+console.info(`${grados}°F = ${Math.round((grados - 32)*(5/9))}°C`)
+  }
+ }
+}
+funcionEjercicio14(75, "F");
+
+//EJERCICIO 15
+const funcionEjercicio15 = (numero = undefined, base = undefined) => {
+if(numero === undefined){
+return console.warn("No se ingreso el número para evaluar");
+} else if(typeof numero !== "number"){
+return console.error(`El valor "${numero}" no es un número`);
+} else if(base === undefined){
+return console.warn("No se ingreso la base para aplicar");
+} else if(typeof base !== "number"){
+return console.error(`El valor "${base}" no es un número`);
+} else {
+if(base === 2){
+return console.info(`${numero} base ${base} = ${parseInt(numero, base)} BASE 10`);
+} else if(base === 10){
+return console.info(`${numero} base ${base} = ${numero.toString(2)} en binario BASE 2`);
+} else {
+return console.error("El tipo de base no es válido");
+}
+}
+} 
+
+funcionEjercicio15(1111, 2);
+funcionEjercicio15(4, 10);
+
+//EJERCICIO 16
+const funcionEjercicio16 = (monto = undefined, descuento = undefined) => {
+if(monto === undefined){
+return console.warn("No se ingresó el monto para evaluar");
+} else if(typeof monto !== "number"){
+return console.error(`El valor "${monto}" no es un número`);
+} else if(Math.sign(monto) === -1){
+return console.error("No se puede ingresar monto negativo")
+} else if(descuento === undefined){
+return console.warn("No se ingresó el descuento para evaluar");
+} else if(typeof descuento !== "number"){
+return console.error(`El valor "${descuento}" no es un número`);
+} else if(Math.sign(descuento) === -1){
+return console.error("El descuento no puede ser negativo");
+}
+
+let total, descuentoCalculado;
+if((monto > 0)&&(descuento > 0)){
+descuentoCalculado = (monto * descuento) / 100;
+total = monto - descuentoCalculado;
+return console.info(total);
+}
+}
+
+funcionEjercicio16(1000, 30);
+
+//EJERCICIO 17
+const funcionEjercicio17 = (fecha = undefined) => {
+if(fecha === undefined){
+return console.warn("No se ingresó la fecha para evaluar");
+} else if(!(fecha instanceof Date)){
+return console.error(`El valor "${fecha}" no es una fecha válida`);
+}
+
+let hoyMenosFecha = new Date().getTime() - fecha.getTime(), //getTime() es una funcion que me muestra los milisegundos de una fecha
+aniosEnMS = 1000 * 60 * 60 * 24 * 365, //1 año expresado en milisegundos
+aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMS);
+
+return (Math.sign(aniosHumanos) === -1) 
+? console.info(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}.`) 
+: (Math.sign(aniosHumanos) === 1) ? console.info(`Pasaron ${aniosHumanos} años desde ${fecha.getFullYear()}.`) 
+: console.info(`Estamos en el mismo año del que ingresaste el cual es ${fecha.getFullYear()}.`);
+}
+
+funcionEjercicio17(new Date);
+funcionEjercicio17(new Date(1998, 11, 14)); //AÑO / MES -1 / DIA -1
+funcionEjercicio17(new Date(2054, 11, 14)); //
+
+
+
+//EJERCICIO 18
+const funcionEjercicio18 = (cadena = "") => {
+if(!cadena){
+console.warn("No ingresaste una cadena para evaluar");
+}
+if(typeof cadena !== "string"){
+console.error(`El valor que es ingresaste ${cadena} no es una cadena de texto`);
+}
+let contVocales = 0, 
+contConsonantes = 0;
+
+cadena = cadena.toLowerCase();
+
+for (let letra of cadena) {
+if(/[aeiou]/.test(letra)){
+contVocales++;
+} else if(/[bcdfghjklmnñpqrstvwxyz]/.test(letra)){
+contConsonantes++;
+}
+}
+
+return console.info({
+cadena,
+contVocales,
+contConsonantes
+});
+}
+
+funcionEjercicio18("Joaquin");
+funcionEjercicio18("JoAqUiN");
+funcionEjercicio18("JOAQUIN");
+funcionEjercicio18("joaquin");
+funcionEjercicio18("West Bromwich Albion Football Club");
+funcionEjercicio18("Ñandu")
+
+//EJERCICIO 19
+const funcionEjercicio19 = (nombreYApellido = "") => {
+
+if(!nombreYApellido){
+return console.info("No ingresaste ningun nombre y apellido");
+}
+
+if(typeof nombreYApellido !== "string"){
+console.error(`El valor que ingresaste ${nombreYApellido} no es una cadena de texto`);
+}
+
+let expRegNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(nombreYApellido); /* ^ = no puede haber nada antes de la RegEx - $ = no puede haber nada despues de la RegEx - + = Evalua por cada caracter que tiene la cadena - \s = Contempla los espacios en blanco*/
+
+if(expRegNombre){
+return console.info(`El nombre ${nombreYApellido}, es un nombre válido`);
+} else {
+return console.error(`El nombre que ingresaste ${nombreYApellido}, no es un nombre válido`);
+}
+
+}
+funcionEjercicio19();
+funcionEjercicio19(233);
+funcionEjercicio19("Joaquín Mele");
+
+//EJERCICIO 20
+const funcionEjercicio20 = (direccionCorreo = "") => {
+if(!direccionCorreo){
+return console.warn("No ingresaste ninguna cadena de texto para evaluar.");
+}
+if(typeof direccionCorreo !== "string"){
+return console.error(`El valor ${direccionCorreo} que ingresaste no es una cadena de texto.`);
+}
+
+let expresionRegularEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i.test(direccionCorreo);
+if(expresionRegularEmail){
+return console.info(`La dirección email que ingresaste ${direccionCorreo}, es una dirección válida.`);
+} else {
+return console.error(`La dirección email ${direccionCorreo}, no es una dirección válida.`);
+}
+}
+
+funcionEjercicio20("joakomele@gmail.com");
+funcionEjercicio20("121312312~sakld");
