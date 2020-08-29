@@ -411,3 +411,98 @@ return console.error(`La dirección email ${direccionCorreo}, no es una direcci�
 
 funcionEjercicio20("joakomele@gmail.com");
 funcionEjercicio20("121312312~sakld");
+
+//EJERCICIO 21
+const funcionEjercicio21 = (arregloNumAlCuadrado = undefined) => {
+if(arregloNumAlCuadrado === undefined){
+return console.warn("No hay elementos para evaluar.");
+}
+if(!(arregloNumAlCuadrado instanceof Array)){
+return console.error(`El valor ${arregloNumAlCuadrado} no es un arreglo.`);
+}
+if(arregloNumAlCuadrado.length === 0){
+return console.error("El arreglo está vacío.");
+}
+
+for (let num of arregloNumAlCuadrado){
+if(typeof num !== "number"){
+return console.error(`El valor ${num} no es un número.`);
+} else {
+const nuevoArray = arregloNumAlCuadrado.map(num => num * num);//EL ELEMENTO num SE MULTIPLICA ASÍ MISMO Y EL RESULTADO ES EL CUADRADO DEL MISMO
+return console.info(`Array original: ${arregloNumAlCuadrado} | Nuevo Arreglo: ${nuevoArray}`);
+}
+}
+}
+
+funcionEjercicio21([2, 3, 4, 5, 6]);
+
+//EJERCICIO 22
+const funcionEjercicio22 = (arrayNums = undefined) => {
+if(arrayNums === undefined){
+return console.warn("No se ingresó ningún elemento numérico al arreglo.")
+}
+if(!(arrayNums instanceof Array)){
+return console.error(`El valor ${arrayNums} no es un arreglo`);
+}
+if(arrayNums.length === 0){
+return console.error("El arreglo no puede estár vacío.");
+}
+
+let maximoArray;
+let minimoArray;
+
+for (let numerosEnteros of arrayNums){
+if(typeof numerosEnteros !== "number"){
+return console.error(`El valor ${numerosEnteros} no es un número.`);
+} else {
+
+maximoArray = Math.max(...arrayNums);
+
+minimoArray = Math.min(...arrayNums);
+
+}
+
+return console.info(`ARREGLO NUMÉRICO: ${arrayNums} -----> VALOR MÁXIMO DEL ARREGLO: ${maximoArray} | VALOR MINIMO DEL ARREGLO: ${minimoArray}`);
+}
+}
+
+funcionEjercicio22([2,54,65,87,110,430]);
+
+//EJERCICIO 23
+const funcionEjerecicio23 = (arregloParesImpares = undefined) => {
+if(arregloParesImpares === undefined){
+return console.warn("No se ingresó ningún elemento numérico al arreglo.");
+}
+if(!(arregloParesImpares instanceof Array)){
+return console.error("Los valores que ingresaste no son de un arreglo.");
+}
+if(arregloParesImpares.length === 0){
+return console.error("El arreglo no puede estar vacío.");
+}
+
+const arrayDePares = [];
+const arrayDeImpares = [];
+
+const Resultados = {
+arrayDePares,
+arrayDeImpares
+}
+
+for (let i = 0; i < arregloParesImpares.length; i++) {
+if(typeof arregloParesImpares[i] !== "number"){
+return console.error(`Los valores ${arregloParesImpares} no son números.`);
+} else {
+
+
+if(arregloParesImpares[i] % 2 === 0){
+arrayDePares.push(arregloParesImpares[i]);
+} else {
+arrayDeImpares.push(arregloParesImpares[i]);
+}
+}
+}
+console.info(Resultados);
+}
+
+funcionEjerecicio23([1, 2, 3, 4, 5, 7, 8, 9, 10]);
+
