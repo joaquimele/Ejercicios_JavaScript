@@ -506,3 +506,118 @@ console.info(Resultados);
 
 funcionEjerecicio23([1, 2, 3, 4, 5, 7, 8, 9, 10]);
 
+
+//EJERCICIO 24
+const funcionEJercicio24 = (arregloNumOrdenados = undefined) => {
+
+if(arregloNumOrdenados === undefined){
+return console.warn("No se ingresó ningún elemento numérico al arreglo.");
+}
+if(!(arregloNumOrdenados instanceof Array)){
+return console.error("Los valores que ingresaste no son de un arreglo.");
+}
+if(arregloNumOrdenados.length === 0){
+return console.error("El arreglo no puede estar vacío.");
+}
+
+const arrayAscendente = [];
+
+const arrayDescendente = [];
+
+const Ordenamiento = {
+arrayAscendente,
+arrayDescendente
+}
+
+for (let i = 0; i < arregloNumOrdenados.length; i++){
+if(typeof arregloNumOrdenados[i] !== "number"){
+return console.error(`Los valores ${arregloNumOrdenados} no son números.`);
+} else {
+
+if(arregloNumOrdenados.sort((a, b) => a - b )){
+//Utilizando el método sort(), ordeno los elementos de un arreglo y pasandole como parámetro de qué manera ordenarlo puedo lograr que ordene el arreglo de menor a mayor o viceversa.
+arrayAscendente.push(arregloNumOrdenados[i]);
+} 
+if(arregloNumOrdenados.sort((a, b) => b - a )){
+arrayDescendente.push(arregloNumOrdenados[i]);
+}
+
+}
+}
+
+console.info(Ordenamiento);
+
+}
+
+funcionEJercicio24([1, 50, 3, 10, 200, 120]);
+
+
+//EJERCICIO 25
+const funcionEjercicio25 = (arrayDeDuplicados = undefined) => {
+
+if(arrayDeDuplicados === undefined){
+return console.warn("No se ingresó ningún elemento numérico al arreglo.");
+}
+if(!(arrayDeDuplicados instanceof Array)){
+return console.error("Los valores que ingresaste no son de un arreglo.");
+}
+if(arrayDeDuplicados.length === 0){
+return console.error("El arreglo no puede estar vacío.");
+}
+
+console.info("Arreglo original: ", arrayDeDuplicados);
+
+for(let i = 0; i < arrayDeDuplicados.length; i++){
+if(arrayDeDuplicados.indexOf(arrayDeDuplicados[i]) !== i){
+//.indexOf() busca un elemento del arreglo y compara si es igual o no a los elementos que ya estan en el arreglo.
+arrayDeDuplicados.splice(i, 1);
+//Los elementos que están duplicados los elimino con el método splice()
+}
+}
+
+console.info("Arreglo sin elementos duplicados: ", arrayDeDuplicados);
+}
+
+funcionEjercicio25([1, 1, 'a', 'k', true, false, false])
+
+//EJERCICIO 26
+const funcionEjercicio26 = (arregloPromediable = undefined) => {
+
+if(arregloPromediable === undefined){
+return console.warn("No se ingresó ningún elemento numérico al arreglo.");
+}
+if(!(arregloPromediable instanceof Array)){
+return console.error("Los valores que ingresaste no son de un arreglo.");
+}
+if(arregloPromediable.length === 0){
+return console.error("El arreglo no puede estar vacío.");
+}
+
+console.info("Elementos del arreglo que se van a sumar sucesivamente: ", arregloPromediable);
+
+let suma, 
+resultado, 
+terminoAnterior = 0;
+
+for (let i = 0; i < arregloPromediable.length; i++){
+if(typeof arregloPromediable[i] !== "number"){
+return console.error(`Los valores ${arregloPromediable} no son números.`);
+} else {
+
+suma = terminoAnterior + arregloPromediable[i];
+terminoAnterior = suma;
+
+resultado = suma / arregloPromediable.length;
+}
+}
+
+
+console.info("Total de la sumatoria: ", suma);
+
+console.info("Promedio del arreglo: ", resultado);
+
+}
+
+funcionEjercicio26([1, 2, 3, 4]);
+
+
