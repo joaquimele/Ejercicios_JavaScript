@@ -621,3 +621,347 @@ console.info("Promedio del arreglo: ", resultado);
 funcionEjercicio26([1, 2, 3, 4]);
 
 
+
+//EJERCICIO 27
+
+class Pelicula {
+constructor({id, titulo, director, anio, pais, genero, calificacion}){
+this.id = id;
+this.titulo = titulo;
+this.director = director;
+this.anio = anio;
+this.pais = pais;
+this.genero = genero;
+this.calificacion = calificacion;
+
+this.validarIMDB(id);
+this.validarTitulo(titulo);
+this.validarDirector(director);
+this.validarEstreno(anio);
+this.validarPais(pais);
+this.validarGeneros(genero);
+this.validarCalificacion(calificacion);
+}
+
+static get listaDeGeneros(){
+return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"]
+}
+
+static generosAceptados(){
+return console.info(`Generos: ${Pelicula.listaDeGeneros.join(", ")}`);
+}
+
+validarCadena(propiedad, valor){
+
+if(!valor){
+return console.warn(`${propiedad} "${valor}" está vacío.`);
+}
+else if(typeof valor !== "string"){
+return console.error(`${propiedad} "${valor}" ingresado, no es una cadena de texto.`);
+}
+
+return true;
+}
+
+validarLongidtudCadena(propiedad, valor, longitud){
+if(valor.length > longitud){
+return console.error(`${propiedad} "${valor}" se excede de la longitud permitida ---> ${longitud}`);
+
+return true;
+}
+}
+
+validarNumero(propiedad, valor){
+if(!valor){
+return console.warn(`${propiedad} "${valor}" está vacío.`);
+}
+if(typeof valor !== "number"){
+return console.error(`${propiedad} "${valor}" no es un número.`);
+}
+
+return true;
+}
+
+validarArreglo(propiedad, valor){
+if(!valor){
+return console.warn(`${propiedad} ${valor} está vacío.`);
+}
+if(!(valor instanceof Array)){
+return console.error(`${propiedad} "${valor}" no es un arreglo.`);
+}
+if(valor.length === 0){
+return console.error(`El arreglo no puede estar vacío.`);
+}
+for (let cadena of valor){
+if(typeof cadena !== "string"){
+return console.error(`El valor ${cadena} no es una cadena de texto.`);
+}
+}
+
+return true;
+}
+
+validarIMDB(id){
+if(this.validarCadena("IMDB id", id)){
+if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+return console.error(`IMDB id "${id}" no cumple con los requisitos para ser un id. El mismo debe estar conformado por 2 caracteres y 7 números.`)
+}
+}
+}
+
+validarTitulo(titulo){
+if(this.validarCadena("Título", titulo)){
+this.validarLongidtudCadena("Título", titulo, 100)
+}
+}
+
+validarDirector(director){
+if(this.validarCadena("Director", director)){
+this.validarLongidtudCadena("Director", director, 50)
+}
+return true;
+}
+
+validarEstreno(anio){
+if(this.validarNumero("Año de Estreno", anio)){
+if(!(/^([0-9]){4}$/.test(anio))){
+return console.error(`El año de estreno "${anio}" no cumple con los requisitos para ser un año válido.`)
+}
+}
+}
+
+validarPais(pais){
+this.validarArreglo("Pais", pais);
+}
+
+validarGeneros(genero){
+if(this.validarArreglo("Generos", genero)){
+for (let genElemento of genero) {
+if(Pelicula.listaDeGeneros.includes(genElemento) === false){
+console.error(`Género(s) ${genero.join(", ")} que introduciste no están incluídos es nuestra lista de géneros.`);
+
+Pelicula.generosAceptados();
+}
+
+}
+}
+}
+validarCalificacion(calificacion){
+if(this.validarNumero("Calificacion", calificacion)){
+if(calificacion < 0 || calificacion > 10){ 
+return console.error(`La calificación debe estar en un rango entre 0 y 10.`);
+} else {
+this.calificacion = calificacion.toFixed(1);
+}
+} 
+}
+
+fichaTecnica(){
+console.info(`Ficha técnica:\n\n IMDB id: ${this.id}\n Título: ${this.titulo}\n Director: ${this.director}\n Año: ${this.anio}\n País: ${this.pais.join(" - ")}\n Género(s): ${this.genero.join(", ")}\n Calificación: ${this.calificacion}`);
+}
+
+} 
+
+const pelis = [{
+id:"aa3344219",
+titulo:"Salvando al Soldado Ryan",
+director:"Steven Spielberg",
+anio:1998,
+pais: ["EE.UU.", "Reino Unido"],
+genero: ["War", "Drama"],
+calificacion: 8.6
+},
+{
+id: "tt2984412",
+titulo:"El Padrino",
+director:"Martin Scorsese",
+anio: 1972,
+pais: ["EE.UU.", "Italia"],
+genero: ["Crime", "Drama"],
+calificacion: 9.2 
+
+},
+{
+id: "tt4533478",
+titulo: "Scarface",
+director:"Brian De Palma",
+anio: 1983,
+pais: ["EE.UU."],
+genero: ["Crime", "Drama"],
+calificacion: 8.3
+}];
+
+pelis.forEach(elemento => new Pelicula(elemento).fichaTecnica());
+
+
+//EJERCICIO 27
+
+class Pelicula {
+constructor({id, titulo, director, anio, pais, genero, calificacion}){
+this.id = id;
+this.titulo = titulo;
+this.director = director;
+this.anio = anio;
+this.pais = pais;
+this.genero = genero;
+this.calificacion = calificacion;
+
+this.validarIMDB(id);
+this.validarTitulo(titulo);
+this.validarDirector(director);
+this.validarEstreno(anio);
+this.validarPais(pais);
+this.validarGeneros(genero);
+this.validarCalificacion(calificacion);
+}
+
+static get listaDeGeneros(){
+return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller", "War", "Western"]
+}
+
+static generosAceptados(){
+return console.info(`Generos: ${Pelicula.listaDeGeneros.join(", ")}`);
+}
+
+validarCadena(propiedad, valor){
+
+if(!valor){
+return console.warn(`${propiedad} "${valor}" está vacío.`);
+}
+else if(typeof valor !== "string"){
+return console.error(`${propiedad} "${valor}" ingresado, no es una cadena de texto.`);
+}
+
+return true;
+}
+
+validarLongidtudCadena(propiedad, valor, longitud){
+if(valor.length > longitud){
+return console.error(`${propiedad} "${valor}" se excede de la longitud permitida ---> ${longitud}`);
+
+return true;
+}
+}
+
+validarNumero(propiedad, valor){
+if(!valor){
+return console.warn(`${propiedad} "${valor}" está vacío.`);
+}
+if(typeof valor !== "number"){
+return console.error(`${propiedad} "${valor}" no es un número.`);
+}
+
+return true;
+}
+
+validarArreglo(propiedad, valor){
+if(!valor){
+return console.warn(`${propiedad} ${valor} está vacío.`);
+}
+if(!(valor instanceof Array)){
+return console.error(`${propiedad} "${valor}" no es un arreglo.`);
+}
+if(valor.length === 0){
+return console.error(`El arreglo no puede estar vacío.`);
+}
+for (let cadena of valor){
+if(typeof cadena !== "string"){
+return console.error(`El valor ${cadena} no es una cadena de texto.`);
+}
+}
+
+return true;
+}
+
+validarIMDB(id){
+if(this.validarCadena("IMDB id", id)){
+if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+return console.error(`IMDB id "${id}" no cumple con los requisitos para ser un id. El mismo debe estar conformado por 2 caracteres y 7 números.`)
+}
+}
+}
+
+validarTitulo(titulo){
+if(this.validarCadena("Título", titulo)){
+this.validarLongidtudCadena("Título", titulo, 100)
+}
+}
+
+validarDirector(director){
+if(this.validarCadena("Director", director)){
+this.validarLongidtudCadena("Director", director, 50)
+}
+return true;
+}
+
+validarEstreno(anio){
+if(this.validarNumero("Año de Estreno", anio)){
+if(!(/^([0-9]){4}$/.test(anio))){
+return console.error(`El año de estreno "${anio}" no cumple con los requisitos para ser un año válido.`)
+}
+}
+}
+
+validarPais(pais){
+this.validarArreglo("Pais", pais);
+}
+
+validarGeneros(genero){
+if(this.validarArreglo("Generos", genero)){
+for (let genElemento of genero) {
+if(Pelicula.listaDeGeneros.includes(genElemento) === false){
+console.error(`Género(s) ${genero.join(", ")} que introduciste no están incluídos es nuestra lista de géneros.`);
+
+Pelicula.generosAceptados();
+}
+
+}
+}
+}
+validarCalificacion(calificacion){
+if(this.validarNumero("Calificacion", calificacion)){
+if(calificacion < 0 || calificacion > 10){ 
+return console.error(`La calificación debe estar en un rango entre 0 y 10.`);
+} else {
+this.calificacion = calificacion.toFixed(1);
+}
+} 
+}
+
+fichaTecnica(){
+console.info(`Ficha técnica:\n\n IMDB id: ${this.id}\n Título: ${this.titulo}\n Director: ${this.director}\n Año: ${this.anio}\n País: ${this.pais.join(" - ")}\n Género(s): ${this.genero.join(", ")}\n Calificación: ${this.calificacion}`);
+}
+
+} 
+
+const pelis = [{
+id:"aa3344219",
+titulo:"Salvando al Soldado Ryan",
+director:"Steven Spielberg",
+anio:1998,
+pais: ["EE.UU.", "Reino Unido"],
+genero: ["War", "Drama"],
+calificacion: 8.6
+},
+{
+id: "tt2984412",
+titulo:"El Padrino",
+director:"Martin Scorsese",
+anio: 1972,
+pais: ["EE.UU.", "Italia"],
+genero: ["Crime", "Drama"],
+calificacion: 9.2 
+
+},
+{
+id: "tt4533478",
+titulo: "Scarface",
+director:"Brian De Palma",
+anio: 1983,
+pais: ["EE.UU."],
+genero: ["Crime", "Drama"],
+calificacion: 8.3
+}];
+
+pelis.forEach(elemento => new Pelicula(elemento).fichaTecnica());
+
